@@ -23,6 +23,8 @@ class StoreShopRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
+            'latitude' => 'nullable|numeric',
+            'longitude' => 'nullable|numeric',
         ];
     }
 }

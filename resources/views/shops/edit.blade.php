@@ -14,8 +14,10 @@
                         @method('PUT')
                         <label for="name">Name:</label>
                         <input type="text" id="name" name="name" value="{{ $shop->name }}">
-
-                        <!-- Add fields for other shop attributes -->
+                        <label for="latitude">Latitude:</label>
+                        <input type="text" id="latitude" name="latitude" value="{{ $shop->latitude }}">
+                        <label for="longitude">Longitude:</label>
+                        <input type="text" id="longitude" name="longitude" value="{{ $shop->longitude }}">
 
                         <button type="submit">Update</button>
                     </form>

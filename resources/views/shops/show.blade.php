@@ -10,7 +10,9 @@
             <div class="bg-white dark:bg-background-200 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-text-950">
                     <p>ID: {{ $shop->uuid }}</p>
-                    <!-- Display other shop details -->
+                    <p>Name: {{ $shop->name }}</p>
+                    <p>Latitude: {{ $shop->latitude }}</p>
+                    <p>Longitude: {{ $shop->longitude }}</p>
 
                     <a href="{{ route('shops.edit', $shop->uuid) }}">Edit</a>
                     <form method="POST" action="{{ route('shops.destroy', $shop->uuid) }}">
