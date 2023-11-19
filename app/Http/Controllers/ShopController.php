@@ -17,7 +17,7 @@ class ShopController extends Controller
      */
     public function index(): View
     {
-        $this->authorize('viewAny', Shop::class);
+        $this->authorize('viewAny', [Shop::class, auth()->user()]);
 
         $shops = Shop::all();
         return view('shops.index', compact('shops'));
@@ -29,7 +29,7 @@ class ShopController extends Controller
      */
     public function create(): View
     {
-        $this->authorize('create', Shop::class);
+        $this->authorize('create', [Shop::class, auth()->user()]);
 
         return view('shops.create');
     }
@@ -40,7 +40,7 @@ class ShopController extends Controller
      */
     public function store(StoreShopRequest $request): RedirectResponse
     {
-        $this->authorize('create', Shop::class);
+        $this->authorize('create', [Shop::class, auth()->user()]);
 
         $validatedData = $request->validated();
 
@@ -55,7 +55,7 @@ class ShopController extends Controller
      */
     public function show(Shop $shop): View
     {
-        $this->authorize('view', $shop);
+        $this->authorize('view', [Shop::class, $shop, auth()->user()]);
 
         return view('shops.show', compact('shop'));
     }
@@ -66,7 +66,7 @@ class ShopController extends Controller
      */
     public function edit(Shop $shop): View
     {
-        $this->authorize('update', $shop);
+        $this->authorize('update', [Shop::class, $shop, auth()->user()]);
 
         return view('shops.edit', compact('shop'));
     }
@@ -77,7 +77,7 @@ class ShopController extends Controller
      */
     public function update(UpdateShopRequest $request, Shop $shop): RedirectResponse
     {
-        $this->authorize('update', $shop);
+        $this->authorize('update', [Shop::class, $shop, auth()->user()]);
 
         $validatedData = $request->validated();
 
@@ -93,7 +93,7 @@ class ShopController extends Controller
      */
     public function destroy(Shop $shop): RedirectResponse
     {
-        $this->authorize('destroy', $shop);
+        $this->authorize('delete', [Shop::class, $shop, auth()->user()]);
 
         $shop->delete();
 
